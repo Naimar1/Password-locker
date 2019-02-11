@@ -34,7 +34,8 @@ class CheckAccount(unittest.TestCase):
         '''
         self.new_account.save_account() # saving the new account
         self.assertEqual(len(account.account_list),1)
-        contact_list = [] 
+       
+        account_list = [] 
  
     def save_account(self):
 
