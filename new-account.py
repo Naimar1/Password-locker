@@ -90,7 +90,7 @@ class CheckAccount(unittest.TestCase):
 
         Account.account_list.remove(self)
 
-    def test_find_account_by_mail(self):
+    def test_find_account_by_email(self):
         
         '''
         test to check if we can find an account by email address and display information
@@ -100,12 +100,12 @@ class CheckAccount(unittest.TestCase):
         test_account = Account("Test","user","0788501277","user@gmail.com","123") # new contact
         test_account.save_account()
 
-        found_account = Account.find_by_mail("user@gmail.com")
+        found_account = Account.find_by_email("user@gmail.com")
 
         self.assertEqual(found_account.password,test_account.password)
 
     @classmethod
-    def find_by_mail(cls,mail):
+    def find_by_email(cls,mail):
         
         '''
         Method that takes a mail and returns an account that matches that mail.
@@ -117,7 +117,7 @@ class CheckAccount(unittest.TestCase):
         '''
 
         for account in cls.account_list:
-            if account.email = email:
+            if account.email == email:
                 return account
     
     def test_display_all_account(self):
