@@ -1,11 +1,6 @@
-import unittest
-from account import Account
-
-class CheckAccount(unittest.TestCase):
+class Account:
     '''
-    Check class that define test cases for the account.
-
-    Args:
-        unittest.TestCase: TestCase class that helps in creating test cases
-
+    Class that show new instances of account
     '''
+
+    
