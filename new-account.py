@@ -51,7 +51,7 @@ class CheckAccount(unittest.TestCase):
             objects to our account_list
             '''
             self.new_account.save_account()
-            test_account = Account("Test","user","0712345678","user@gmail.com","123") # new account
+            test_account = Account("Test","user","0788501277","user@gmail.com","123") # new account
             test_account.save_account()
             self.assertEqual(len(Account.account_list),2)
 
@@ -67,7 +67,7 @@ class CheckAccount(unittest.TestCase):
             objects to our account_list
             '''
             self.new_account.save_account()
-            test_account = Account("Test","user","0712345678","user@gmail.com","123") # new contact
+            test_account = Account("Test","user","0788501277","user@gmail.com","123") # new contact
             test_account.save_account()
             self.assertEqual(len(Account.account_list),2)
 
@@ -76,7 +76,7 @@ class CheckAccount(unittest.TestCase):
             test_delete_account to test if we can remove a account from our account list
             '''
             self.new_account.save_account()
-            test_account = Account("Test","user","0712345678","user@gmail.com","123") # new contact
+            test_account = Account("Test","user","0788501277","user@gmail.com","123") # new contact
             test_account.save_account()
 
             self.new_account.delete_account()# Deleting an account object
@@ -97,12 +97,36 @@ class CheckAccount(unittest.TestCase):
         '''
 
         self.new_account.save_account()
-        test_account = Account("Test","user","0711223344","user@gmail.com","123") # new contact
+        test_account = Account("Test","user","0788501277","user@gmail.com","123") # new contact
         test_account.save_account()
 
         found_account = Account.find_by_mail("user@gmail.com")
 
         self.assertEqual(found_account.password,test_account.password)
+
+    @classmethod
+    def find_by_mail(cls,mail):
+        
+        '''
+        Method that takes a mail and returns an account that matches that mail.
+
+        Args:
+            mail: email address to search for
+        Returns :
+            Account of  the person that matches the mail address.
+        '''
+
+        for account in cls.account_list:
+            if account.email = email:
+                return account
+    
+    def test_display_all_account(self):
+        '''
+        method that returns a list of all account saved
+        '''
+
+        self.assertEqual(Account.display_accounts(),Account.account_list)
+
 
    
 
