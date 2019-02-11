@@ -23,4 +23,7 @@ class CheckAccount(unittest.TestCase):
             self.assertEqual(self.new_account.email,"ange@gmail.com")
             self.assertEqual(self.new_account.password,"ange234")
 
+ if __name__ == '__main__':
+    unittest.main()
+
 
