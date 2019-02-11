@@ -51,7 +51,7 @@ class CheckAccount(unittest.TestCase):
             objects to our account_list
             '''
             self.new_account.save_account()
-            test_account = Account("Test","user","0712345678","test@user.com","123") # new account
+            test_account = Account("Test","user","0712345678","user@gmail.com","123") # new account
             test_account.save_account()
             self.assertEqual(len(Account.account_list),2)
 
@@ -67,7 +67,7 @@ class CheckAccount(unittest.TestCase):
             objects to our account_list
             '''
             self.new_account.save_account()
-            test_account = Account("Test","user","0712345678","test@user.com","123") # new contact
+            test_account = Account("Test","user","0712345678","user@gmail.com","123") # new contact
             test_account.save_account()
             self.assertEqual(len(Account.account_list),2)
 
@@ -76,7 +76,7 @@ class CheckAccount(unittest.TestCase):
             test_delete_account to test if we can remove a account from our account list
             '''
             self.new_account.save_account()
-            test_account = Account("Test","user","0712345678","test@user.com","123") # new contact
+            test_account = Account("Test","user","0712345678","user@gmail.com","123") # new contact
             test_account.save_account()
 
             self.new_account.delete_account()# Deleting an account object
@@ -90,12 +90,21 @@ class CheckAccount(unittest.TestCase):
 
         Account.account_list.remove(self)
 
-
-
-
+    def test_find_account_by_mail(self):
         
+        '''
+        test to check if we can find an account by email address and display information
+        '''
 
-            
+        self.new_account.save_account()
+        test_account = Account("Test","user","0711223344","user@gmail.com","123") # new contact
+        test_account.save_account()
+
+        found_account = Account.find_by_mail("user@gmail.com")
+
+        self.assertEqual(found_account.password,test_account.password)
+
+   
 
 if __name__ == '__main__':
     unittest.main()
