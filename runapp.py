@@ -83,7 +83,22 @@ def main():
                               
     print("Account's Password")
     print("-"*18)
+    print("\nChoose:")
+    print("-"*10)
+    print("'gp' - Application to generate password for you, 'np' - new password")
     a_password = input()
+    if a_password == "np":
+                print("\nEnter your password")
+                print("-"*18)
+                pass_word = input()
+    elif a_password == "gp":
+                chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                pass_word = "".join(random.choice(chars) for _ in range(6))
+                print(f"\nYour password is: **{pass_word}**")
+
+    #save_accounts(create_accounts(view_password,account,login_name,pass_word))
+    print("\n")
+    #print(f"New credentials **{account}**, **{login_name}**, **{pass_word}** created")
     new_account = Account(f_name,l_name,p_number,e_address,a_password)
     new_account.save_account()
     # save_accounts(create_account(f_name,l_name,p_number,e_address,a_password)) # create and save new account.
@@ -133,42 +148,51 @@ def main():
 
                         print("\nLogin to your account")
                         print("-"*20)
-                        print("\nEmail:")
-                        print("-" * 6)
                         username_input = input()
-                        print("\nPassword:")
-                        print("-"*10)
                         user_password_input = input()
-                        view_password = user_password_input
-                        if check_existing_accounts(user_password_input):
-                                print("\nYou can put the new one!")
-                                print("New Credential")
-                                print("-" *10)
+                        for account in Account.account_list:
+                                if account.email == username_input and account.password == user_password_input:       
+                                        print("The email is right")
+                                        print("-" * 6)
+                                        
+                                # elif  account.password == password:
+                                #         print("\nPassword:")
+                                #         print("-"*10)
+                                #         user_password_input = input()
+                                #         view_password = user_password_input
+                                #         print("Successfully")
 
-                                print("\nWhich account you want to be applied to?")
-                                print("-"*40)
-                                account = input()
+                                else:
+                                        print("This account don't exist")
+                        # if check_existing_accounts(user_password_input):
+                        #         print("\nYou can put the new one!")
+                        #         print("New Credential")
+                        #         print("-" *10)
 
-                                print(f"\nyour username for the {account} account?")
-                                print("-"*40)
-                                login_name = input()
+                        #         print("\nWhich account you want to be applied to?")
+                        #         print("-"*40)
+                        #         account = input()
 
-                                print("\nChoose:")
-                                print("-"*10)
-                                print("'gp' - Application to generate password for you, 'np' - new password")
-                                password_creation_input = input()
-                                if password_creation_input == "np":
-                                        print("\nEnter your password")
-                                        print("-"*10)
-                                        pass_word = input()
-                                elif password_creation_input == "gp":
-                                        chars = "abcdefghijklmnopqrstuvwxyz1234567890"
-                                        pass_word = "".join(random.choice(chars) for _ in range(6))
-                                        print(f"\nYour password is: **{pass_word}**")
+                        #         print(f"\nyour username for the {account} account?")
+                        #         print("-"*40)
+                        #         login_name = input()
 
-                                save_credentials(create_credentials(view_password,account,login_name,pass_word))
-                                print("\n")
-                                print(f"New credentials **{account}**, **{login_name}**, **{pass_word}** created")
+                        #         print("\nChoose:")
+                        #         print("-"*10)
+                        #         print("'gp' - Application to generate password for you, 'np' - new password")
+                        #         password_creation_input = input()
+                        #         if password_creation_input == "np":
+                        #                 print("\nEnter your password")
+                        #                 print("-"*10)
+                        #                 pass_word = input()
+                        #         elif password_creation_input == "gp":
+                        #                 chars = "abcdefghijklmnopqrstuvwxyz1234567890"
+                        #                 pass_word = "".join(random.choice(chars) for _ in range(6))
+                        #                 print(f"\nYour password is: **{pass_word}**")
+
+                        #         save_credentials(create_credentials(view_password,account,login_name,pass_word))
+                        #         print("\n")
+                        #         print(f"New credentials **{account}**, **{login_name}**, **{pass_word}** created")
                                                 
                 elif short_code == 'dl':
 
