@@ -19,6 +19,7 @@ They have to view the various account credentials and their passwords in the app
 * cd Password-locker
 * code . (if you are using visual studio)
 * atom .
+* run : python3 name of the file.py
 
 ## Known Bugs
 Hope that my codes is clear and understandable,
