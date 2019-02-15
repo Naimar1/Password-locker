@@ -52,7 +52,7 @@ def display_account():
     return Account.display_accounts()
 
 def main():
-    print("This is your Account List. What is your name?")
+    print("This is Password Locker Program. What is your name?")
     user_name = input()
     print('\n')
     print(f"Hey Dear {user_name}. what would you like to do?")
